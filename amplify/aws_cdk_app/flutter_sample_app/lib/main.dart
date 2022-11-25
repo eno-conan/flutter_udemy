@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -33,11 +34,27 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  late Response response;
+  Dio dio = Dio();
+  bool loading = false; //for data featching status
+  var apidata; //for decoded JSON data
 
   void _incrementCounter() {
+    getData();
     setState(() {
       _counter++;
     });
+  }
+
+// https://www.fluttercampus.com/guide/235/fetch-data-from-rest-api/
+  getData() async {
+    setState(() {
+      loading = true; //make loading true to show progressindicator
+    });
+    //   String url = "http://localhost:3000/";
+    //   Response response = await dio.get(url);
+    //   apidata = response.data; //get JSON decoded data from response
+    //   print(apidata); //printing the JSON recieved
   }
 
   @override
