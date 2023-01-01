@@ -1,3 +1,4 @@
+import 'package:dropdown_sample/dropdown.dart';
 import 'package:dropdown_sample/pages/new_file.dart';
 import 'package:flutter/material.dart';
 
@@ -17,65 +18,16 @@ class MyApp extends StatelessWidget {
 }
 
 //1
-class SamplePage extends StatefulWidget {
+class SamplePage extends StatelessWidget {
   const SamplePage({Key? key}) : super(key: key);
 
-  @override
-  State<SamplePage> createState() => _SamplePageState();
-}
-
-class _SamplePageState extends State<SamplePage> {
   //2:itemsのいずれかに設定しないとエラー出る
-  String? isSelectedItem = 'bbb';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('DropdownButton Sample'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //3
-            DropdownButton(
-              //4
-              items: const [
-                //5
-                DropdownMenuItem(
-                  child: Text('aaa'),
-                  value: 'aaa',
-                ),
-                DropdownMenuItem(
-                  child: Text('bbb'),
-                  value: 'bbb',
-                ),
-                DropdownMenuItem(
-                  child: Text('ccc'),
-                  value: 'ccc',
-                ),
-              ],
-              //6
-              onChanged: (String? value) {
-                setState(() {
-                  isSelectedItem = value;
-                });
-              },
-              //7:
-              value: isSelectedItem,
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            Text('$isSelectedItem が選択されました。'),
-            // ある文字列を渡して、その文言を表示するWidgetを読み込み
-            MyText(
-              message: 'Hello2',
-            )
-          ],
+        appBar: AppBar(
+          title: const Text('DropdownButton Sample'),
         ),
-      ),
-    );
+        body: const Center(child: DropDownPage()));
   }
 }

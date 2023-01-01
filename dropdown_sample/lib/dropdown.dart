@@ -13,31 +13,42 @@ class _DropDownPageState extends State<DropDownPage> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      //4
-      items: const [
-        //5
-        DropdownMenuItem(
-          child: Text('aaa'),
-          value: 'aaa',
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // 3
+        DropdownButton(
+          //4
+          items: const [
+            //5
+            DropdownMenuItem(
+              child: Text('aaa'),
+              value: 'aaa',
+            ),
+            DropdownMenuItem(
+              child: Text('bbb'),
+              value: 'bbb',
+            ),
+            DropdownMenuItem(
+              child: Text('ccc'),
+              value: 'ccc',
+            ),
+          ],
+          //6
+          onChanged: (String? value) {
+            setState(() {
+              isSelectedItem = value;
+            });
+          },
+          //7:
+          value: isSelectedItem,
         ),
-        DropdownMenuItem(
-          child: Text('bbb'),
-          value: 'bbb',
+        const SizedBox(
+          height: 32,
         ),
-        DropdownMenuItem(
-          child: Text('ccc'),
-          value: 'ccc',
-        ),
+        Text('$isSelectedItem が選択されました。'),
+        // ある文字列を渡して、その文言を表示するWidgetを読み込み
       ],
-      //6
-      onChanged: (String? value) {
-        setState(() {
-          isSelectedItem = value;
-        });
-      },
-      //7:
-      value: isSelectedItem,
     );
   }
 }
