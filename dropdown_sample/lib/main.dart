@@ -28,6 +28,12 @@ class SamplePage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('DropdownButton Sample'),
         ),
-        body: const Center(child: DropDownPage()));
+        body: Center(
+          child: Column(
+            children: const <Widget>[
+              DropDownPage(),
+            ],
+          ),
+        ));
   }
 }
