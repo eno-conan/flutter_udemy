@@ -1,5 +1,6 @@
-import 'package:dropdown_sample/dropdown.dart';
+import 'package:dropdown_sample/pages/dropdown.dart';
 import 'package:dropdown_sample/pages/first_page.dart';
+import 'package:dropdown_sample/pages/google_books.dart';
 import 'package:dropdown_sample/pages/new_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,18 +35,14 @@ class SamplePage extends StatelessWidget {
         body: Center(
           child: Column(
             children: <Widget>[
-              MyText(message: 'Hello'),
-              const DropDownPage(),
+              MyText(message: 'Hello: Message Widget'),
+              const DropDownPage(), //プルダウン表示
               const Divider(
                 height: 50,
               ),
-              Icon(Icons.share),
-              SizedBox(
-                height: 16,
-              ),
-              Icon(CupertinoIcons.share),
+              // 別ページ遷移
               TextButton(
-                child: Text("サンプルページへ"),
+                child: const Text("サンプルページへ"),
                 onPressed: () {
                   // （1） 指定した画面に遷移する
                   Navigator.push(
@@ -55,16 +52,23 @@ class SamplePage extends StatelessWidget {
                           builder: (context) => FirstPage()));
                 },
               ),
-              const Spacer(),
-              DottedBorder(
-                color: Colors.blue,
-                child: Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.red,
-                ),
+              TextButton(
+                child: const Text("google Books"),
+                onPressed: () {
+                  // （1） 指定した画面に遷移する
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          // （2） 実際に表示するページ(ウィジェット)を指定する
+                          builder: (context) => GoogleBooks()));
+                },
               ),
               const Spacer(),
+              const Icon(Icons.share),
+              const SizedBox(
+                height: 16,
+              ),
+              const Icon(CupertinoIcons.share), //アイコン（ダウンロードみたいな）
             ],
           ),
         ));
