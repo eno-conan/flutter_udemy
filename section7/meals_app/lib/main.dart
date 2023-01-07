@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/categories_meals_screen.dart';
-import 'package:meals_app/categories_screen.dart';
+import 'package:meals_app/screens/categories_meals_screen.dart';
+import 'package:meals_app/screens/categories_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
               .copyWith(secondary: Colors.amber)),
       // home: const CategoriesScreen(),
       // routing setting
-      initialRoute: '/',
+      // initialRoute: '/',
       routes: {
         '/': (ctx) => const CategoriesScreen(),
-        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen()
+        CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen()
       },
     );
   }
@@ -48,9 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DeliMeals'),
+        title: const Text('DeliMeals'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Navigation Time!'),
       ),
     );
