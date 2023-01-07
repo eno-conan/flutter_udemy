@@ -4,6 +4,8 @@ import 'package:meals_app/widgets/meal_item.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = '/category-meals';
+  // final String categoryId;
+  // final String categoryTitle;
 
   const CategoryMealsScreen({super.key});
 
@@ -21,6 +23,7 @@ class CategoryMealsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(categoryTitle),
       ),
+      // builder：表示する要素が事前に確定しない場合に用いる
       body: ListView.builder(
         itemBuilder: (cxt, index) {
           return MealItem(

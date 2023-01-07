@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:meals_app/models/meal.dart';
 
 class MealItem extends StatelessWidget {
@@ -18,7 +16,7 @@ class MealItem extends StatelessWidget {
       required this.complexity,
       required this.affordability});
 
-  // Complexity
+  // Complexityの表示内容制御
   String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
@@ -35,7 +33,7 @@ class MealItem extends StatelessWidget {
     }
   }
 
-  // Affordability
+  // Affordabilityの表示内容制御
   String get affordabilityText {
     switch (affordability) {
       case Affordability.Affordable:
@@ -62,11 +60,12 @@ class MealItem extends StatelessWidget {
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular((15))),
         elevation: 4,
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             Stack(
               children: <Widget>[
+                // 画像の形を調整
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15),
@@ -77,6 +76,7 @@ class MealItem extends StatelessWidget {
                   child: Image.network(imageUrl,
                       height: 300, width: double.infinity, fit: BoxFit.cover),
                 ),
+                // 表示位置調整
                 Positioned(
                   bottom: 20,
                   right: 10,
@@ -105,21 +105,21 @@ class MealItem extends StatelessWidget {
                       children: <Widget>[
                         const Icon(Icons.schedule),
                         const SizedBox(width: 6),
-                        Text('$duration min'),
+                        Text('$duration min'), //文字列の中で変数を用いる方法
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         const Icon(Icons.work),
                         const SizedBox(width: 6),
-                        Text(complexityText),
+                        Text(complexityText), // 関数で表示する文字列を制御
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         const Icon(Icons.attach_money),
                         const SizedBox(width: 6),
-                        Text(affordabilityText),
+                        Text(affordabilityText), // 関数で表示する文字列を制御
                       ],
                     )
                   ]),
