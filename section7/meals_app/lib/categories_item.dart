@@ -1,24 +1,16 @@
-import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:meals_app/categories_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
+  final String id;
   final String title;
   final Color color;
-  const CategoryItem({super.key, required this.title, required this.color});
+  const CategoryItem(
+      {super.key, required this.title, required this.color, required this.id});
 
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      //MaterialPageRoute:need for animation from previous view to next view
-      MaterialPageRoute(
-        builder: (_) {
-          return const CategoryMealsScreen();
-        },
-      ),
-    );
+    Navigator.of(ctx).pushNamed(CategoryMealsScreen.routeName,
+        arguments: {'id': id, 'title': title});
   }
 
   @override
