@@ -6,13 +6,10 @@
 - [23/01/07：BoxFit](https://zenn.dev/faucon/articles/e4364aa0d33aad)
 - [23/01/07：ClipRRectを使ってみた](https://zenn.dev/faucon/articles/a2b7fd7b58606e)
 - [23/01/07：ListViewを使った一覧作成(builderやsparatedの違い)](https://flutter.ctrnost.com/basic/layout/listview/)
+- [23/01/07：system ui isn't respondingがでるときに対応](https://qiita.com/tru-ymgc/items/c4ce737d41b06ce55dce)
+
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
