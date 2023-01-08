@@ -9,6 +9,7 @@ class CategoryItem extends StatelessWidget {
       {super.key, required this.title, required this.color, required this.id});
 
   void selectCategory(BuildContext ctx) {
+    // routing時に引数設定してカテゴリごとの料理一覧へ遷移
     Navigator.of(ctx).pushNamed(CategoryMealsScreen.routeName,
         arguments: {'id': id, 'title': title});
   }

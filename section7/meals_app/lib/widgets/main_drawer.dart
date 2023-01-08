@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:meals_app/screens/filters_screen.dart';
 
+// Drawerに関する実装
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
 
   // 同じようなWidgetを複数作成するので、切り出し
-  Widget buildListTile(String title, IconData icon) {
+  Widget buildListTile(String title, IconData icon, Function() tapHandler) {
     return ListTile(
       leading: Icon(
         icon,
@@ -19,9 +21,7 @@ class MainDrawer extends StatelessWidget {
             fontSize: 24,
             fontWeight: FontWeight.bold),
       ),
-      onTap: () {
-        //
-      },
+      onTap: tapHandler,
     );
   }
 
@@ -45,8 +45,14 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          buildListTile('Meals', Icons.restaurant),
-          buildListTile('Filters', Icons.settings),
+          // クリックでMain画面表示
+          buildListTile('Meals', Icons.restaurant, () {
+            Navigator.of(context)
+                .pushReplacementNamed('/'); //l-178:ページが次々と蓄積されることを防ぐために使用
+          }),
+          buildListTile('Filters', Icons.settings, () {
+            Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
+          }),
         ],
       ),
     );
