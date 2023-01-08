@@ -10,6 +10,8 @@
   - DeviceManagerから`Wipe Data`をクリック
 - [23/01/08：The argument type 'Object?' can't be assigned to the parameter type 'Widget?'](https://stackoverflow.com/questions/67546811/the-argument-type-object-cant-be-assigned-to-the-parameter-type-widget)
   - `as Widget`を使って対処
+- [23/01/08：Null check operator used on a null value'](https://stackoverflow.com/questions/64278595/null-check-operator-used-on-a-null-value)
+- [23/01/08：変数定義時のlateについて'](https://qiita.com/nukotsuka/items/66236723bf17c4574608)
 
 
 ## Getting Started

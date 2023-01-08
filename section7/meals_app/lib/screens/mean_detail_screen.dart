@@ -33,53 +33,61 @@ class MeanDetailScreen extends StatelessWidget {
     final mealId = ModalRoute.of(context)!.settings.arguments as String;
     final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == mealId);
     return Scaffold(
-        appBar: AppBar(title: Text(selectedMeal.title)),
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 300,
-                width: double.infinity,
-                child: Image.network(
-                  selectedMeal.imageUrl,
-                  fit: BoxFit.cover,
+      appBar: AppBar(title: Text(selectedMeal.title)),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                selectedMeal.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+            buildSectionTitle(context, 'Ingredients'),
+            buildContainer(ListView.builder(
+              itemBuilder: (cxt, index) => Card(
+                color: Theme.of(context).colorScheme.secondary,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 3,
+                    horizontal: 15,
+                  ),
+                  child: Text(selectedMeal.ingredients[index]),
                 ),
               ),
-              buildSectionTitle(context, 'Ingredients'),
-              buildContainer(ListView.builder(
-                itemBuilder: (cxt, index) => Card(
-                  color: Theme.of(context).colorScheme.secondary,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 3,
-                      horizontal: 15,
-                    ),
-                    child: Text(selectedMeal.ingredients[index]),
-                  ),
-                ),
-                itemCount: selectedMeal.ingredients.length,
-              )),
-              buildSectionTitle(context, 'Steps'),
-              buildContainer(
-                ListView.builder(
-                  itemBuilder: (ctx, index) => Column(
-                    children: [
-                      ListTile(
-                        leading: CircleAvatar(
-                          child: Text('# ${(index + 1)}'),
-                        ),
-                        title: Text(
-                          selectedMeal.steps[index],
-                        ),
+              itemCount: selectedMeal.ingredients.length,
+            )),
+            buildSectionTitle(context, 'Steps'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) => Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                        child: Text('# ${(index + 1)}'),
                       ),
-                      const Divider(),
-                    ],
-                  ),
-                  itemCount: selectedMeal.steps.length,
+                      title: Text(
+                        selectedMeal.steps[index],
+                      ),
+                    ),
+                    const Divider(),
+                  ],
                 ),
+                itemCount: selectedMeal.steps.length,
               ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.delete),
+        onPressed: () {
+          // l-179:pop():前画面に戻ったり、ダイアログ削除などで役立つ
+          Navigator.of(context).pop(mealId);
+        },
+      ),
+    );
   }
 }
