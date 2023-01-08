@@ -7,6 +7,9 @@
 - [23/01/07：ClipRRectを使ってみた](https://zenn.dev/faucon/articles/a2b7fd7b58606e)
 - [23/01/07：ListViewを使った一覧作成(builderやsparatedの違い)](https://flutter.ctrnost.com/basic/layout/listview/)
 - [23/01/07：system ui isn't respondingがでるときに対応](https://qiita.com/tru-ymgc/items/c4ce737d41b06ce55dce)
+  - DeviceManagerから`Wipe Data`をクリック
+- [23/01/08：The argument type 'Object?' can't be assigned to the parameter type 'Widget?'](https://stackoverflow.com/questions/67546811/the-argument-type-object-cant-be-assigned-to-the-parameter-type-widget)
+  - `as Widget`を使って対処
 
 
 ## Getting Started

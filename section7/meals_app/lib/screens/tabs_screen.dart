@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:meals_app/screens/categories_screen.dart';
+import 'package:meals_app/screens/favorites_screen.dart';
+
+class TabScreen extends StatefulWidget {
+  const TabScreen({super.key});
+
+  @override
+  State<TabScreen> createState() => _TabScreenState();
+}
+
+class _TabScreenState extends State<TabScreen> {
+  final List<Map<String, Object>> _pages = [
+    {'page': const CategoriesScreen(), 'title': 'Categories'},
+    {'page': const FavoritesScreen(), 'title': 'Your Favorite'},
+  ];
+  int _selectedPageIndex = 0;
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // l-174：タブで表示内容の切り替え
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_pages[_selectedPageIndex]['title'] as String),
+      ),
+      body: _pages[_selectedPageIndex]['page'] as Widget,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: _selectPage,
+        backgroundColor: Colors.purple,
+        unselectedItemColor: Colors.white, //非選択タブの色
+        selectedItemColor: Theme.of(context).colorScheme.secondary, //選択タブの色
+        currentIndex: _selectedPageIndex, //何番目のタブを選択状態か
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: const Icon(Icons.category),
+              label: 'Categories'),
+          BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: const Icon(Icons.star),
+              label: 'Favorites'),
+        ],
+      ),
+    );
+  }
+}
