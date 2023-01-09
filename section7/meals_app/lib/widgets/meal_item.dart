@@ -9,17 +9,16 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function removeItem; //l-179:メニュー削除で使用
 
-  const MealItem(
-      {super.key,
-      required this.id,
-      required this.title,
-      required this.imageUrl,
-      required this.duration,
-      required this.complexity,
-      required this.affordability,
-      required this.removeItem});
+  const MealItem({
+    super.key,
+    required this.id,
+    required this.title,
+    required this.imageUrl,
+    required this.duration,
+    required this.complexity,
+    required this.affordability,
+  });
 
   // Complexityの表示内容制御
   String get complexityText {
@@ -60,7 +59,7 @@ class MealItem extends StatelessWidget {
         // ignore: avoid_print
         .then((result) {
       if (result != null) {
-        removeItem(result);
+        // removeItem(result);
       }
     });
   }

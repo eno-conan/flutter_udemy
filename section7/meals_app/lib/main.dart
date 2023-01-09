@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meal> _availableMeals = DUMMY_MEALS;
-  List<Meal> _favoriteMeals = [];
+  final List<Meal> _favoriteMeals = [];
 
 // 各カテゴリを選択した際に表示されるレシピのフィルタリングを行う
 // filters_screen.dart：onPressed（保存ボタン）を押した段階でこの処理が走る
@@ -50,6 +50,28 @@ class _MyAppState extends State<MyApp> {
         return true;
       }).toList();
     });
+  }
+
+// お気に入りに設定、および設定解除
+  void _toggleFavorite(String mealId) {
+    final existingIndex =
+        _favoriteMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favoriteMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favoriteMeals.add(
+          DUMMY_MEALS.firstWhere((meal) => meal.id == mealId),
+        );
+      });
+    }
+  }
+
+// お気に入りになっているか判定
+  bool _isMealFavorite(String id) {
+    return _favoriteMeals.any((meal) => meal.id == id);
   }
 
   @override
@@ -77,10 +99,14 @@ class _MyAppState extends State<MyApp> {
       // initialRoute: '/',
       routes: {
         // '/': (ctx) => const CategoriesScreen(),
-        '/': (ctx) => const TabScreen(),
+        '/': (ctx) => TabScreen(favoriteMeals: _favoriteMeals),
         CategoryMealsScreen.routeName: (ctx) =>
             CategoryMealsScreen(availableMeals: _availableMeals),
-        MeanDetailScreen.routeName: (ctx) => const MeanDetailScreen(),
+        // _toggleFavorite, _isMealFavorite
+        MeanDetailScreen.routeName: (ctx) => MeanDetailScreen(
+              isFavorite: _isMealFavorite,
+              toggleFavorite: _toggleFavorite,
+            ),
         FiltersScreen.routeName: (ctx) => FiltersScreen(
               saveFilters: _setFilters,
               currentFilters: _filters,

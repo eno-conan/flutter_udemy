@@ -3,7 +3,11 @@ import 'package:meals_app/dummy_data.dart';
 
 class MeanDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
-  const MeanDetailScreen({super.key});
+  final Function isFavorite;
+  final Function toggleFavorite;
+
+  const MeanDetailScreen(
+      {super.key, required this.toggleFavorite, required this.isFavorite});
 
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
@@ -82,11 +86,10 @@ class MeanDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.delete),
-        onPressed: () {
-          // l-179:pop():前画面に戻ったり、ダイアログ削除などで役立つ
-          Navigator.of(context).pop(mealId);
-        },
+        child: Icon(
+          isFavorite(mealId) ? Icons.star : Icons.star_border,
+        ),
+        onPressed: () => toggleFavorite(mealId),
       ),
     );
   }
