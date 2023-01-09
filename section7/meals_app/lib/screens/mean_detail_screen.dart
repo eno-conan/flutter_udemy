@@ -86,6 +86,7 @@ class MeanDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        // お気に入り登録に関する処理処理
         child: Icon(
           isFavorite(mealId) ? Icons.star : Icons.star_border,
         ),

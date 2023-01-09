@@ -113,6 +113,7 @@ class MealItem extends StatelessWidget {
                   //間隔調整
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
+                    // 調理時間
                     Row(
                       children: <Widget>[
                         const Icon(Icons.schedule),
@@ -120,6 +121,7 @@ class MealItem extends StatelessWidget {
                         Text('$duration min'), //文字列の中で変数を用いる方法
                       ],
                     ),
+                    // 難易度
                     Row(
                       children: <Widget>[
                         const Icon(Icons.work),
@@ -127,6 +129,7 @@ class MealItem extends StatelessWidget {
                         Text(complexityText), // 関数で表示する文字列を制御
                       ],
                     ),
+                    // 料金？
                     Row(
                       children: <Widget>[
                         const Icon(Icons.attach_money),

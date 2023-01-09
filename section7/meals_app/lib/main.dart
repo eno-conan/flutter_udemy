@@ -25,7 +25,9 @@ class _MyAppState extends State<MyApp> {
     'vegetarian': false,
   };
 
+  // 表示するメニュー一覧
   List<Meal> _availableMeals = DUMMY_MEALS;
+  //お気に入りのメニューを管理
   final List<Meal> _favoriteMeals = [];
 
 // 各カテゴリを選択した際に表示されるレシピのフィルタリングを行う

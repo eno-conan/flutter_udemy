@@ -7,6 +7,7 @@ import 'package:meals_app/screens/favorites_screen.dart';
 import 'package:meals_app/widgets/main_drawer.dart';
 
 class TabScreen extends StatefulWidget {
+  // お気に入りメニュー
   final List<Meal> favoriteMeals;
   const TabScreen({super.key, required this.favoriteMeals});
 
@@ -15,7 +16,9 @@ class TabScreen extends StatefulWidget {
 }
 
 class _TabScreenState extends State<TabScreen> {
+  // ページ一覧（カテゴリ一覧/お気に入り）
   late List<Map<String, Object>> _pages;
+  // 何番目のタブを選択しているか管理
   int _selectedPageIndex = 0;
 
   @override

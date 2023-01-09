@@ -6,11 +6,13 @@ import 'package:meals_app/models/meal.dart';
 import '../widgets/meal_item.dart';
 
 class FavoritesScreen extends StatelessWidget {
+  // お気に入りメニューを管理
   final List<Meal> favoriteMeals;
   const FavoritesScreen({super.key, required this.favoriteMeals});
 
   @override
   Widget build(BuildContext context) {
+    // お気に入りメニューの有無で表示内容を切り替え
     if (favoriteMeals.isEmpty) {
       return const Center(
         child: Text('You have no favorites yet - start adding some!'),

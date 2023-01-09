@@ -24,6 +24,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   @override
   initState() {
+    // 現在の真偽値の状態を各変数に設定
     _glutenFree = widget.currentFilters['gluten']!;
     _lactoseFree = widget.currentFilters['lactose']!;
     _vegetarian = widget.currentFilters['vegetarian']!;
@@ -57,6 +58,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             IconButton(
               icon: const Icon(Icons.save),
               onPressed: () {
+                // 各switchの値（真偽値）を設定
                 final selectedFilters = {
                   'gluten': _glutenFree,
                   'lactose': _lactoseFree,
