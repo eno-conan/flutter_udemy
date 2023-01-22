@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:shopapp/screen/product_detail_screen.dart';
 
 // 各商品の表示形式
 class ProductItem extends StatelessWidget {
@@ -38,9 +39,24 @@ class ProductItem extends StatelessWidget {
             color: Theme.of(context).colorScheme.secondary,
           ),
         ),
-        child: Image.network(
-          imageUrl,
-          fit: BoxFit.cover,
+        child: GestureDetector(
+          // l-191:追加、タップしたときの挙動（PCでいうクリックに値）
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              // product_detailへidを渡す
+              ProductDetailScreen.routeName, arguments: id,
+              // 以下のように、コンストラクタの引数に値を渡す形を取らない
+              // 柔軟な構成を実現できなくなるから。
+              // MaterialPageRoute(
+              //   builder: (ctx) => ProductDetailScreen(
+              //         title: title,
+              //       ))
+            );
+          },
+          child: Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
