@@ -17,25 +17,31 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // お気に入り、商品名、カートの順に表示
-    return GridTile(
-      footer: GridTileBar(
-        backgroundColor: Colors.grey,
-        leading: IconButton(
-          icon: const Icon(Icons.favorite),
-          onPressed: () {},
+    return ClipRRect(
+      // 角に丸みを持たせるために、ClipRRectを使用:l-190
+      borderRadius: BorderRadius.circular(10),
+      child: GridTile(
+        footer: GridTileBar(
+          backgroundColor: Colors.black38,
+          leading: IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () {},
+            color: Theme.of(context).colorScheme.secondary,
+          ),
+          title: Text(
+            title,
+            textAlign: TextAlign.center,
+          ),
+          trailing: IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {},
+            color: Theme.of(context).colorScheme.secondary,
+          ),
         ),
-        title: Text(
-          title,
-          textAlign: TextAlign.center,
+        child: Image.network(
+          imageUrl,
+          fit: BoxFit.cover,
         ),
-        trailing: IconButton(
-          icon: const Icon(Icons.shopping_cart),
-          onPressed: () {},
-        ),
-      ),
-      child: Image.network(
-        imageUrl,
-        fit: BoxFit.cover,
       ),
     );
   }
