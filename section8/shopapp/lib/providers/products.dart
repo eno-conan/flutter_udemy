@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:shopapp/models/product.dart';
+import 'package:shopapp/providers/product.dart';
 
 // l-194:Provider定義
 class Products with ChangeNotifier {

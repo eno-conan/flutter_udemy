@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopapp/providers/product.dart';
+import 'package:shopapp/providers/products.dart';
 import 'package:shopapp/screen/product_detail_screen.dart';
 
 // 各商品の表示形式
 class ProductItem extends StatelessWidget {
-  final String id;
-  final String title;
-  final String imageUrl;
+  // final String id;
+  // final String title;
+  // final String imageUrl;
 
-  const ProductItem(
-      {super.key,
-      required this.id,
-      required this.title,
-      required this.imageUrl});
+  // const ProductItem(
+  //     {super.key,
+  //     required this.id,
+  //     required this.title,
+  //     required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context);
     // お気に入り、商品名、カートの順に表示
     return ClipRRect(
       // 角に丸みを持たせるために、ClipRRectを使用:l-190
@@ -23,12 +27,16 @@ class ProductItem extends StatelessWidget {
         footer: GridTileBar(
           backgroundColor: Colors.black38,
           leading: IconButton(
-            icon: const Icon(Icons.favorite),
-            onPressed: () {},
+            icon: Icon(
+                //l-198：ハートのアイコンの状態を切り替え
+                product.isFavorite ? Icons.favorite : Icons.favorite_border),
+            onPressed: () {
+              product.toggleFavoriteStatus();
+            },
             color: Theme.of(context).colorScheme.secondary,
           ),
           title: Text(
-            title,
+            product.title,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
@@ -42,7 +50,7 @@ class ProductItem extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed(
               // product_detailへidを渡す
-              ProductDetailScreen.routeName, arguments: id,
+              ProductDetailScreen.routeName, arguments: product.id,
               // 以下のように、コンストラクタの引数に値を渡す形を取らない
               // 柔軟な構成を実現できなくなるから。
               // MaterialPageRoute(
@@ -52,7 +60,7 @@ class ProductItem extends StatelessWidget {
             );
           },
           child: Image.network(
-            imageUrl,
+            product.imageUrl,
             fit: BoxFit.cover,
           ),
         ),
