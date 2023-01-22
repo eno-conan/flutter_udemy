@@ -4,7 +4,10 @@ import 'package:shopapp/providers/products.dart';
 import 'package:shopapp/widgets/product_item.dart';
 
 // l-194で作成したWidget
+// 商品一覧を表示するwidget
 class ProductsGrid extends StatelessWidget {
+  const ProductsGrid({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Providerから情報取得

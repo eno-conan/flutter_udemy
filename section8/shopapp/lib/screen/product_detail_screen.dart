@@ -5,13 +5,15 @@ import 'package:provider/provider.dart';
 import 'package:shopapp/providers/product.dart';
 import 'package:shopapp/providers/products.dart';
 
+// 商品の詳細画面
 class ProductDetailScreen extends StatelessWidget {
+  static const routeName = 'product-detail';
   // final String title;
   // final double price;
   // const ProductDetailScreen(
   //     {super.key, required this.title, required this.price});
 
-  static const routeName = 'product-detail';
+  const ProductDetailScreen({super.key});
   @override
   Widget build(BuildContext context) {
     // 商品一覧からのルーティング時にargumentsが設定した値を受け取る

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopapp/widgets/products_grid.dart';
 
+// 商品の一覧画面
 class ProductsOverviewScreen extends StatelessWidget {
   const ProductsOverviewScreen({super.key});
 

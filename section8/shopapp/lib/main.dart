@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             accentColor: Colors.deepOrange,
             fontFamily: 'Lato'),
-        home: ProductsOverviewScreen(),
+        home: const ProductsOverviewScreen(),
         routes: {ProductDetailScreen.routeName: (ctx) => ProductDetailScreen()},
       ),
     );

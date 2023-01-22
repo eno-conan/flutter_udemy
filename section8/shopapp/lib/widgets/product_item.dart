@@ -4,7 +4,7 @@ import 'package:shopapp/providers/product.dart';
 import 'package:shopapp/providers/products.dart';
 import 'package:shopapp/screen/product_detail_screen.dart';
 
-// 各商品の表示形式
+// ある商品の情報を表示するWidget
 class ProductItem extends StatelessWidget {
   // final String id;
   // final String title;
