@@ -27,11 +27,7 @@ class ProductsGrid extends StatelessWidget {
           // 画面全体を再構築するかどうかは、行う操作によって判断する（メモリの関係もある）
           // 実際、このnotifierProviderは不要と判断したら、自動でクリーンを行ってくれる
           value: products[index],
-          child: ProductItem(
-              // id: products[index].id,
-              // title: products[index].title,
-              // imageUrl: products[index].imageUrl
-              ))),
+          child: const ProductItem())),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 3 / 2,
