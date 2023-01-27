@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopapp/providers/cart.dart';
 import 'package:shopapp/providers/products.dart';
 import 'package:shopapp/screen/product_detail_screen.dart';
 import 'package:shopapp/screen/products_overview_screen.dart';
@@ -12,9 +13,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // l-194:Providerの定義
-    return ChangeNotifierProvider(
-      // ここではprovider.valueはしようせず、createで全体の再構築を実施する
-      create: (ctx) => Products(),
+    // l-203：MultiProvider
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            // ここではprovider.valueはしようせず、createで全体の再構築を実施する
+            create: (ctx) => Products()),
+        ChangeNotifierProvider(
+            // ここではprovider.valueはしようせず、createで全体の再構築を実施する
+            create: (ctx) => Cart()),
+      ],
       child: MaterialApp(
         title: 'MyShop',
         theme: ThemeData(
