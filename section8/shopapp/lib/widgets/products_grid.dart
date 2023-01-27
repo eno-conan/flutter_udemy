@@ -6,14 +6,17 @@ import 'package:provider/provider.dart';
 // l-194で作成したWidget
 // 商品一覧を表示するwidget
 class ProductsGrid extends StatelessWidget {
-  const ProductsGrid({super.key});
+  final bool showFavorites;
+  const ProductsGrid({super.key, required this.showFavorites});
 
   @override
   Widget build(BuildContext context) {
     // Providerから情報取得
     final productData = Provider.of<Products>(context);
     //getterを介してデータ取得
-    final products = productData.items;
+    // l-201：お気に入り一覧を返すか、全商品を返すか
+    final products =
+        showFavorites ? productData.favoriteItems : productData.items;
     return GridView.builder(
       padding: const EdgeInsets.all(20),
       itemCount: products.length,

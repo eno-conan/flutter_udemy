@@ -37,11 +37,33 @@ class Products with ChangeNotifier {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),
   ];
+  // var _showFavoritesOnly = false;
 
   List<Product> get items {
     //角括弧でコピーを返す(コピーしないと本体を更新される可能性がある)
     // 参照先も渡すことになるから
+    // l-201お気に入りのみ表示する場合と場合分け
+    // if (_showFavoritesOnly) {
+    //   return _items.where((prod) => prod.isFavorite).toList();
+    // }
     return [..._items];
+  }
+
+  // void showFavoriteOnly() {
+  //   _showFavoritesOnly = true;
+  //   // これがないと通知が届かない
+  //   notifyListeners();
+  // }
+
+  // void showAll() {
+  //   _showFavoritesOnly = false;
+  //   // これがないと通知が届かない
+  //   notifyListeners();
+  // }
+
+  // l-201
+  List<Product> get favoriteItems {
+    return _items.where((prod) => prod.isFavorite).toList();
   }
 
   Product findById(String id) {
