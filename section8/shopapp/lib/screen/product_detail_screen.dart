@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:provider/provider.dart';
 import 'package:shopapp/providers/product.dart';
+import 'package:provider/provider.dart';
 import 'package:shopapp/providers/products.dart';
 
 // 商品の詳細画面

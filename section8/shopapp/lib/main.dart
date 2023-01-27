@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // l-194:Providerの定義
     return ChangeNotifierProvider(
+      // ここではprovider.valueはしようせず、createで全体の再構築を実施する
       create: (ctx) => Products(),
       child: MaterialApp(
         title: 'MyShop',
