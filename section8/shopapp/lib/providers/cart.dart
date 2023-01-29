@@ -11,10 +11,20 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  late Map<String, CartItem> _items;
+  final Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
     return {..._items};
+  }
+
+//商品の個数を取得
+  int get itemCount {
+    // return _items == null ? 1 : 1;
+    if (_items == null) {
+      return 0;
+    } else {
+      return items.length;
+    }
   }
 
   //商品追加（更新/追加）
@@ -27,6 +37,7 @@ class Cart with ChangeNotifier {
     } else {
       _items.putIfAbsent(productId,
           () => CartItem(DateTime.now().toString(), title, 1, price));
+      notifyListeners(); //l-204：これがないと、商品追加に関するイベントが伝播（通知）されない
     }
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopapp/providers/cart.dart';
 import 'package:shopapp/providers/products.dart';
+import 'package:shopapp/widgets/badge.dart';
 import 'package:shopapp/widgets/products_grid.dart';
 
 enum FilterOptions {
@@ -21,7 +23,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   //商品の表示
   @override
   Widget build(BuildContext context) {
-    // // 201Productsクラスの情報管理
+    //l-201Productsクラスの情報管理
     // final productsContainer = Provider.of<Products>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
@@ -48,7 +50,20 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                     value: FilterOptions.All, child: Text('Show All')),
               ],
               icon: const Icon(Icons.more_vert),
-            )
+            ),
+            // l-204：カートボタンをおしたときに　、カートの商品数の数字を更新する
+            Consumer<Cart>(
+              builder: (_, cart, ch) => BadgeWidget(
+                value: cart.itemCount.toString(),
+                child: ch as Widget,
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.shopping_cart,
+                ),
+                onPressed: () {},
+              ),
+            ),
           ],
         ),
         body: ProductsGrid(showFavorites: _showFavoritesOnly));

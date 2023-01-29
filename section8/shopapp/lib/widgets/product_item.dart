@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopapp/providers/cart.dart';
 import 'package:shopapp/providers/product.dart';
 import 'package:shopapp/providers/products.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
     // print('ABC');
     // お気に入り、商品名、カートの順に表示
     return ClipRRect(
@@ -37,7 +39,9 @@ class ProductItem extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              cart.addCart(product.id, product.price, product.title);
+            },
             color: Theme.of(context).colorScheme.secondary,
           ),
         ),
