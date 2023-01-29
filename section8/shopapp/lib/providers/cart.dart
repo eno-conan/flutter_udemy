@@ -27,6 +27,15 @@ class Cart with ChangeNotifier {
     }
   }
 
+  // 合計金額
+  double get totalAmount {
+    var total = 0.0;
+    _items.forEach((key, cartItem) {
+      total += cartItem.price * cartItem.quantity;
+    });
+    return total;
+  }
+
   //商品追加（更新/追加）
   void addCart(String productId, double price, String title) {
     if (_items.containsKey(productId)) {
