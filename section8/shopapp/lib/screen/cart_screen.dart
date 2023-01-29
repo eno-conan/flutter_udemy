@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
-import 'package:shopapp/providers/cart.dart';
+import '../providers/cart.dart' show Cart;
+import '../widgets/cart_item.dart' as ci;
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
@@ -52,7 +53,20 @@ class CartScreen extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Expanded(
+            child: ListView.builder(
+          itemBuilder: (ctx, i) => ci.CartItem(
+              // Mapの値を取得するので、values.toList()
+              id: cart.items.values.toList()[i].id,
+              title: cart.items.values.toList()[i].title,
+              quantity: cart.items.values.toList()[i].quantity,
+              price: cart.items.values.toList()[i].price),
+          itemCount: cart.items.length,
+        )),
       ]),
     );
   }
