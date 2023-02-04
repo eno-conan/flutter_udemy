@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
+import 'package:shopapp/providers/orders.dart';
 import '../providers/cart.dart' show Cart;
 import '../widgets/cart_item.dart' as ci;
 
@@ -44,7 +45,13 @@ class CartScreen extends StatelessWidget {
                   backgroundColor: Theme.of(context).primaryColor,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // 注文処理(l-210)
+                    Provider.of<Orders>(context, listen: false)
+                        .addOrder(cart.items.values.toList(), cart.totalAmount);
+                    // カートをリセット(l-210)
+                    cart.clear();
+                  },
                   child: Text(
                     'Order Now',
                     style: TextStyle(color: Theme.of(context).primaryColor),

@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shopapp/providers/products.dart';
 
 // 商品の詳細画面
+// l-208：基本的な表示内容実装
 class ProductDetailScreen extends StatelessWidget {
   static const routeName = 'product-detail';
   // final String title;
@@ -27,7 +28,40 @@ class ProductDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(loadedProduct.title),
       ),
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 300,
+              width: double.infinity, //広げられるだけ広げる
+              child: Image.network(
+                loadedProduct.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              '\$${loadedProduct.price}',
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 20,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              width: double.infinity,
+              child: Text(
+                loadedProduct.description,
+                textAlign: TextAlign.center,
+                softWrap: true, //false：折り返ししない
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

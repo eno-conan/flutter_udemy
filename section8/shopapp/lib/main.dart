@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopapp/providers/cart.dart';
+import 'package:shopapp/providers/orders.dart';
 import 'package:shopapp/providers/products.dart';
 import 'package:shopapp/screen/cart_screen.dart';
 import 'package:shopapp/screen/product_detail_screen.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             // ここではprovider.valueはしようせず、createで全体の再構築を実施する
             create: (ctx) => Cart()),
+        ChangeNotifierProvider(
+            // ここではprovider.valueはしようせず、createで全体の再構築を実施する
+            create: (ctx) => Orders()),
       ],
       child: MaterialApp(
         title: 'MyShop',

@@ -50,8 +50,16 @@ class Cart with ChangeNotifier {
     }
   }
 
+  // 商品削除
   void removeItem(String productId) {
     _items.remove(productId);
+    notifyListeners();
+  }
+
+//カートを空っぽにする
+  void clear() {
+    // _items = {};
+    _items.clear();
     notifyListeners();
   }
 }
