@@ -49,4 +49,9 @@ class Cart with ChangeNotifier {
       notifyListeners(); //l-204：これがないと、商品追加に関するイベントが伝播（通知）されない
     }
   }
+
+  void removeItem(String productId) {
+    _items.remove(productId);
+    notifyListeners();
+  }
 }

@@ -26,50 +26,52 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Widget build(BuildContext context) {
     //l-201Productsクラスの情報管理
     // final productsContainer = Provider.of<Products>(context, listen: false);
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('MyShop'),
-          actions: <Widget>[
-            // 縦3点のイラスト
-            PopupMenuButton(
-              onSelected: (FilterOptions selectedValue) {
-                setState(() {
-                  if (selectedValue == FilterOptions.Favorites) {
-                    // productsContainer.showFavoriteOnly();
-                    _showFavoritesOnly = true;
-                  } else {
-                    // productsContainer.showAll();
-                    _showFavoritesOnly = false;
-                  }
-                });
-              },
-              itemBuilder: (_) => [
-                const PopupMenuItem(
-                    value: FilterOptions.Favorites,
-                    child: Text('Only Favorite')),
-                const PopupMenuItem(
-                    value: FilterOptions.All, child: Text('Show All')),
-              ],
-              icon: const Icon(Icons.more_vert),
-            ),
-            // l-204：カートボタンをおしたときに　、カートの商品数の数字を更新する
-            Consumer<Cart>(
-              builder: (_, cart, ch) => BadgeWidget(
-                value: cart.itemCount.toString(),
-                child: ch as Widget,
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.shopping_cart,
-                ),
-                // カートアイコンクリックで、カート表示
-                onPressed: () {
-                  Navigator.of(context).pushNamed(CartScreen.routeName);
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('MyShop'),
+            actions: <Widget>[
+              // 縦3点のイラスト
+              PopupMenuButton(
+                onSelected: (FilterOptions selectedValue) {
+                  setState(() {
+                    if (selectedValue == FilterOptions.Favorites) {
+                      // productsContainer.showFavoriteOnly();
+                      _showFavoritesOnly = true;
+                    } else {
+                      // productsContainer.showAll();
+                      _showFavoritesOnly = false;
+                    }
+                  });
                 },
+                itemBuilder: (_) => [
+                  const PopupMenuItem(
+                      value: FilterOptions.Favorites,
+                      child: Text('Only Favorite')),
+                  const PopupMenuItem(
+                      value: FilterOptions.All, child: Text('Show All')),
+                ],
+                icon: const Icon(Icons.more_vert),
               ),
-            ),
-          ],
-        ),
-        body: ProductsGrid(showFavorites: _showFavoritesOnly));
+              // l-204：カートボタンをおしたときに　、カートの商品数の数字を更新する
+              Consumer<Cart>(
+                builder: (_, cart, ch) => BadgeWidget(
+                  value: cart.itemCount.toString(),
+                  child: ch as Widget,
+                ),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.shopping_cart,
+                  ),
+                  // カートアイコンクリックで、カート表示
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(CartScreen.routeName);
+                  },
+                ),
+              ),
+            ],
+          ),
+          body: ProductsGrid(showFavorites: _showFavoritesOnly)),
+    );
   }
 }

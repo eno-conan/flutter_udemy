@@ -62,6 +62,7 @@ class CartScreen extends StatelessWidget {
           itemBuilder: (ctx, i) => ci.CartItem(
               // Mapの値を取得するので、values.toList()
               id: cart.items.values.toList()[i].id,
+              productId: cart.items.keys.toList()[i],
               title: cart.items.values.toList()[i].title,
               quantity: cart.items.values.toList()[i].quantity,
               price: cart.items.values.toList()[i].price),
